@@ -1,0 +1,37 @@
+---
+import "../styles/global.css";
+import Navbar from "../components/layout/Navbar.astro";
+import Footer from "../components/layout/Footer.astro";
+import SmoothScroll from "../components/core/SmoothScroll.astro";
+import ScrollAnimations from "../components/core/ScrollAnimations.astro";
+
+interface Props {
+    title: string;
+    description?: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<html lang="es" class="scroll-smooth">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+        <title>{title}</title>
+        {description && <meta name="description" content={description} />}
+        <script
+            src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"
+        ></script>
+    </head>
+    <body
+        class="bg-background text-slate-400 selection:bg-indigo-500/30 selection:text-indigo-200 overflow-x-hidden antialiased"
+    >
+        <Navbar />
+        <slot />
+        <Footer />
+        <SmoothScroll />
+        <ScrollAnimations />
+    </body>
+</html>

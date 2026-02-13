@@ -1,0 +1,106 @@
+<nav id="main-nav" class="fixed top-0 w-full z-50 bg-transparent py-4">
+    <div
+        class="nav-content max-w-screen-xl mx-auto px-6 flex items-center justify-between transition-all duration-300 gap-8"
+    >
+        <!-- Logo -->
+        <a href="#" class="flex items-center gap-2 group">
+            <div
+                class="w-6 h-6 bg-indigo-500/20 border border-indigo-500/30 rounded flex items-center justify-center text-indigo-400"
+            >
+                <span class="font-mono text-xs font-bold">/</span>
+            </div>
+            <span
+                class="text-sm font-medium text-white tracking-tight group-hover:text-indigo-300 transition-colors"
+                >Dev.Identity</span
+            >
+        </a>
+
+        <!-- Links (Hidden mobile) -->
+        <div class="hidden md:flex items-center gap-6">
+            <a
+                href="#stack"
+                class="text-xs font-medium text-slate-400 hover:text-white transition-colors"
+                >Stack</a
+            >
+            <a
+                href="#projects"
+                class="text-xs font-medium text-slate-400 hover:text-white transition-colors"
+                >Proyectos</a
+            >
+            <a
+                href="#pricing"
+                class="text-xs font-medium text-slate-400 hover:text-white transition-colors"
+                >Servicios</a
+            >
+        </div>
+
+        <!-- CTA -->
+        <a
+            href="#contact"
+            class="hidden sm:flex items-center gap-2 bg-white text-black px-4 py-1.5 rounded-full text-xs font-medium hover:bg-slate-200 transition-colors"
+        >
+            <span>Contactar</span>
+            <iconify-icon icon="solar:arrow-right-linear"></iconify-icon>
+        </a>
+
+        <!-- Mobile Menu Icon -->
+        <button class="md:hidden text-white">
+            <iconify-icon icon="solar:hamburger-menu-linear" class="text-xl"
+            ></iconify-icon>
+        </button>
+    </div>
+</nav>
+
+<style>
+    /* Navbar Transition Classes */
+    #main-nav {
+        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    :global(.nav-scrolled) {
+        top: 1.5rem !important;
+        width: fit-content !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        border-radius: 9999px !important;
+        background: rgba(5, 5, 5, 0.8) !important;
+        backdrop-filter: blur(16px) !important;
+        border: 0.5px solid rgba(255, 255, 255, 0.1) !important;
+        padding-left: 1.5rem !important;
+        padding-right: 1.5rem !important;
+        padding-top: 0.75rem !important;
+        padding-bottom: 0.75rem !important;
+        box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.5);
+    }
+    :global(.nav-scrolled .nav-content) {
+        width: auto;
+        max-width: none;
+        padding: 0;
+    }
+</style>
+
+<script>
+    const nav = document.getElementById("main-nav");
+    const scrollThreshold = 50;
+
+    if (nav) {
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > scrollThreshold) {
+                nav.classList.add("nav-scrolled");
+                nav.classList.remove(
+                    "w-full",
+                    "border-none",
+                    "bg-transparent",
+                    "py-4",
+                );
+            } else {
+                nav.classList.remove("nav-scrolled");
+                nav.classList.add(
+                    "w-full",
+                    "border-none",
+                    "bg-transparent",
+                    "py-4",
+                );
+            }
+        });
+    }
+</script>

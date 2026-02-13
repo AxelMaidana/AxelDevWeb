@@ -1,0 +1,81 @@
+<header
+    class="relative w-full h-[100dvh] flex flex-col justify-center items-center px-4 overflow-hidden"
+>
+    <!-- Abstract Background Glows -->
+    <div
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-indigo-600/10 rounded-full blur-[120px] pointer-events-none"
+    >
+    </div>
+
+    <div
+        class="relative z-10 text-center max-w-4xl space-y-8"
+        data-reveal="fade-up"
+    >
+        <!-- Badge -->
+        <div
+            class="inline-flex items-center gap-2 border border-white/10 bg-white/5 backdrop-blur-sm px-3 py-1 rounded-full mx-auto"
+        >
+            <span class="relative flex h-2 w-2">
+                <span
+                    class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"
+                ></span>
+                <span
+                    class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"
+                ></span>
+            </span>
+            <span
+                class="text-xs font-mono text-slate-300 tracking-wide uppercase"
+                >Disponible Q4 2026</span
+            >
+        </div>
+
+        <!-- Main Title -->
+        <h1
+            class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-medium text-white tracking-tighter leading-[0.9] text-glow"
+        >
+            Ingeniería Visual.<br />
+            <span class="text-slate-500">Código Escalable.</span>
+        </h1>
+
+        <!-- Subtitle -->
+        <p
+            class="text-lg md:text-xl text-slate-400 font-light max-w-2xl mx-auto leading-relaxed"
+        >
+            Diseño y desarrollo web enfocado en la conversión. Transformo ideas
+            complejas en interfaces digitales minimalistas y de alto
+            rendimiento.
+        </p>
+
+        <!-- Actions -->
+        <div
+            class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4"
+        >
+            <button
+                class="h-12 px-8 rounded bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-medium transition-all flex items-center gap-2 group cursor-pointer"
+            >
+                Ver Proyectos
+                <iconify-icon
+                    icon="solar:arrow-right-up-linear"
+                    class="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
+                ></iconify-icon>
+            </button>
+            <button
+                class="h-12 px-8 rounded border border-white/10 hover:bg-white/5 text-white text-sm font-medium transition-all flex items-center gap-2 cursor-pointer"
+            >
+                <iconify-icon icon="solar:copy-linear"></iconify-icon>
+                Copiar Email
+            </button>
+        </div>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div
+        class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50"
+    >
+        <span class="text-[10px] font-mono uppercase tracking-widest"
+            >Scroll</span
+        >
+        <div class="w-[1px] h-12 bg-gradient-to-b from-white to-transparent">
+        </div>
+    </div>
+</header>

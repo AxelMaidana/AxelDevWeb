@@ -1,0 +1,226 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { projectsData } from "../../data/projects";
+
+export function getStaticPaths() {
+    return projectsData.map((project) => ({
+        params: { id: project.id },
+        props: { project },
+    }));
+}
+
+const { project } = Astro.props;
+---
+
+<Layout
+    title={`${project.title} | Dev.Identity`}
+    description={project.shortDescription}
+>
+    <!-- Breadcrumbs (Above Content) -->
+    <div
+        class="w-full border-b border-white/5 bg-[#080808]/50 backdrop-blur-sm pt-28 pb-4"
+    >
+        <div class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
+            <nav aria-label="Breadcrumb" data-reveal="fade-down">
+                <ol
+                    class="flex items-center gap-2 text-xs font-mono tracking-widest uppercase"
+                >
+                    <li>
+                        <a
+                            href="/"
+                            class="text-slate-500 hover:text-white transition-colors flex items-center gap-1"
+                        >
+                            <iconify-icon
+                                icon="solar:home-2-linear"
+                                class="text-sm"></iconify-icon>
+                            <span>Inicio</span>
+                        </a>
+                    </li>
+                    <li class="text-slate-800">/</li>
+                    <li>
+                        <a
+                            href="/#projects"
+                            class="text-slate-500 hover:text-white transition-colors"
+                            >Proyectos</a
+                        >
+                    </li>
+                    <li class="text-slate-800">/</li>
+                    <li
+                        class="text-indigo-400/80 font-medium"
+                        aria-current="page"
+                    >
+                        {project.title}
+                    </li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <main class="min-h-screen bg-background pb-32">
+        <section class="relative h-[70vh] min-h-[600px] w-full mt-8">
+            <div
+                class="absolute inset-0 max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 h-full rounded-[2rem] overflow-hidden"
+            >
+                <img
+                    src={project.image}
+                    alt={project.title}
+                    class="absolute inset-0 w-full h-full object-cover"
+                    transition:name={`project-media-${project.id}`}
+                />
+
+                <div
+                    class="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/40 to-transparent"
+                >
+                </div>
+
+                <div
+                    class="absolute inset-0 flex flex-col justify-end p-8 md:p-16"
+                >
+                    <div class="max-w-4xl" data-reveal="fade-up">
+                        <div class="flex items-center gap-4 mb-6">
+                            <span
+                                class="text-xs font-mono border border-white/10 bg-black/50 backdrop-blur-md px-3 py-1.5 rounded-full text-indigo-300 uppercase tracking-wider"
+                            >
+                                {project.category}
+                            </span>
+                            <span class="text-xs font-mono text-slate-400">
+                                {project.year}
+                            </span>
+                        </div>
+
+                        <h1
+                            class="text-4xl md:text-6xl lg:text-7xl text-white font-medium tracking-tight mb-4"
+                            transition:name={`project-title-${project.id}`}
+                        >
+                            {project.title}
+                        </h1>
+                        <p
+                            class="text-xl md:text-2xl text-slate-300 font-light max-w-2xl"
+                        >
+                            {project.shortDescription}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 mt-12">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                <div
+                    class="lg:col-span-4 flex flex-col gap-6"
+                    data-reveal="fade-up"
+                >
+                    <div
+                        class="bg-[#0A0A0A] border border-white/5 rounded-[2rem] p-8 md:p-10 hover:border-white/10 transition-colors"
+                    >
+                        <h3
+                            class="text-sm font-mono text-slate-500 mb-6 uppercase tracking-wider"
+                        >
+                            Detalles
+                        </h3>
+                        <div class="space-y-6">
+                            <div>
+                                <p class="text-xs text-slate-600 mb-1">Rol</p>
+                                <p class="text-white font-medium">
+                                    {project.role}
+                                </p>
+                            </div>
+                            <div>
+                                <p class="text-xs text-slate-600 mb-1">
+                                    Stack Tecnológico
+                                </p>
+                                <div class="flex flex-wrap gap-2 mt-2">
+                                    {
+                                        project.technologies.map((tech) => (
+                                            <span class="text-[11px] font-mono border border-indigo-500/20 bg-indigo-500/5 text-indigo-300 px-2.5 py-1 rounded-full">
+                                                {tech}
+                                            </span>
+                                        ))
+                                    }
+                                </div>
+                            </div>
+                            <div class="pt-4 flex gap-4">
+                                {
+                                    project.liveUrl && (
+                                        <a
+                                            href={project.liveUrl}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            class="flex items-center gap-2 text-sm text-white hover:text-emerald-400 transition-colors group"
+                                        >
+                                            <span>Live Site</span>
+                                            <iconify-icon
+                                                icon="solar:arrow-right-up-linear"
+                                                class="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
+                                            />
+                                        </a>
+                                    )
+                                }
+                                {
+                                    project.repoUrl && (
+                                        <a
+                                            href={project.repoUrl}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            class="flex items-center gap-2 text-sm text-white hover:text-slate-300 transition-colors group"
+                                        >
+                                            <span>Repository</span>
+                                            <iconify-icon
+                                                icon="solar:github-linear"
+                                                class="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
+                                            />
+                                        </a>
+                                    )
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="lg:col-span-8 flex flex-col gap-6"
+                    data-reveal="fade-up"
+                    data-reveal-delay="100"
+                >
+                    <div
+                        class="bg-[#0A0A0A] border border-white/5 rounded-[2rem] p-8 md:p-12 hover:border-white/10 transition-colors"
+                    >
+                        <h3
+                            class="text-sm font-mono text-slate-500 mb-6 uppercase tracking-wider"
+                        >
+                            El Desafío
+                        </h3>
+                        <p
+                            class="text-lg md:text-xl text-slate-300 font-light leading-relaxed"
+                        >
+                            {project.fullDescription}
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        {
+                            project.features.map((feature, idx) => (
+                                <div
+                                    class={`bg-gradient-to-br from-[#0A0A0A] to-[#0D0D0D] border border-white/5 rounded-[2rem] p-8 hover:border-indigo-500/20 transition-colors relative overflow-hidden group ${idx === project.features.length - 1 && project.features.length % 2 !== 0 ? "md:col-span-2" : ""}`}
+                                >
+                                    <div class="absolute -right-20 -top-20 w-40 h-40 bg-indigo-500/10 rounded-full blur-3xl group-hover:bg-indigo-500/20 transition-colors" />
+
+                                    <iconify-icon
+                                        icon="solar:star-fall-minimalistic-linear"
+                                        class="text-3xl text-indigo-400 mb-6"
+                                    />
+                                    <h4 class="text-xl text-white font-medium mb-3 relative z-10">
+                                        {feature.title}
+                                    </h4>
+                                    <p class="text-slate-400 font-light leading-relaxed relative z-10">
+                                        {feature.description}
+                                    </p>
+                                </div>
+                            ))
+                        }
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</Layout>

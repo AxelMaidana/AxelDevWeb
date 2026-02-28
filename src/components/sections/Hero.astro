@@ -10,6 +10,7 @@
             loop
             muted
             playsinline
+            preload="auto"
             class="absolute w-full h-full object-cover scale-105 opacity-[0.35] blur-[8px]"
         >
             <source src="/bg.mp4" type="video/mp4" />
@@ -101,6 +102,15 @@
     import { gsap } from "gsap";
 
     function initHeroAnimation() {
+        // Force play video for mobile browsers
+        const video = document.querySelector("video");
+        if (video) {
+            video.play().catch(() => {
+                // Autoplay was prevented, usually by low power mode
+                console.log("Video autoplay prevented by browser");
+            });
+        }
+
         const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
         gsap.set(".hero-title", { y: 120, autoAlpha: 0 });

@@ -1,149 +1,103 @@
 <nav
     id="main-nav"
-    class="fixed top-0 left-0 w-full z-50 flex justify-center pointer-events-none"
+    class="fixed top-0 left-0 w-full z-50 flex justify-center mt-6 px-6 md:px-0 transition-transform duration-500"
 >
     <div
         id="nav-inner"
-        class="nav-content w-full max-w-screen-xl px-6 py-4 flex items-center justify-between pointer-events-auto transition-colors duration-300"
+        class="w-full max-w-screen-xl px-4 py-3 flex items-center justify-between border border-transparent rounded-full transition-all duration-500"
     >
         <!-- Logo -->
-        <div id="nav-logo" class="flex items-center gap-2 group cursor-pointer">
-            <a href="#" class="flex items-center gap-2">
-                <div
-                    class="w-6 h-6 bg-indigo-500/20 border border-indigo-500/30 rounded flex items-center justify-center text-indigo-400"
-                >
-                    <span class="font-mono text-xs font-bold">/</span>
-                </div>
-                <span
-                    class="text-sm font-medium text-white tracking-tight group-hover:text-indigo-300 transition-colors"
-                    >Dev.Identity</span
-                >
-            </a>
-        </div>
+        <a
+            href="#"
+            id="nav-logo"
+            class="flex items-center gap-3 group cursor-pointer lg:pl-4 transition-transform duration-500"
+        >
+            <span class="text-base font-semibold text-primary tracking-tight"
+                >Dev.Identity</span
+            >
+        </a>
 
         <!-- Links (Hidden mobile) -->
-        <div id="nav-links" class="hidden md:flex items-center gap-6">
-            <a
-                href="#stack"
-                class="text-xs font-medium text-slate-400 hover:text-white transition-colors"
-                >Stack</a
-            >
+        <div id="nav-links" class="hidden md:flex items-center gap-2">
             <a
                 href="#projects"
-                class="text-xs font-medium text-slate-400 hover:text-white transition-colors"
-                >Proyectos</a
+                class="px-5 py-2.5 rounded-full text-sm font-medium text-secondary hover:text-primary hover:bg-white/5 transition-all"
+                >Work</a
             >
             <a
                 href="#pricing"
-                class="text-xs font-medium text-slate-400 hover:text-white transition-colors"
-                >Servicios</a
+                class="px-5 py-2.5 rounded-full text-sm font-medium text-secondary hover:text-primary hover:bg-white/5 transition-all"
+                >Services</a
+            >
+            <a
+                href="#stack"
+                class="px-5 py-2.5 rounded-full text-sm font-medium text-secondary hover:text-primary hover:bg-white/5 transition-all"
+                >Stack</a
             >
         </div>
 
         <!-- CTA -->
-        <div id="nav-cta">
+        <div id="nav-cta" class="lg:pr-1 transition-transform duration-500">
             <a
                 href="#contact"
-                class="hidden sm:flex items-center gap-2 bg-white text-black px-4 py-1.5 rounded-full text-xs font-medium hover:bg-slate-200 transition-colors"
+                class="hidden sm:flex items-center justify-center bg-primary text-background px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-white hover:scale-105 transition-all shadow-sm"
             >
-                <span>Contactar</span>
-                <iconify-icon icon="solar:arrow-right-linear"></iconify-icon>
+                Let's Talk
             </a>
 
             <!-- Mobile Menu Icon -->
-            <button class="md:hidden text-white">
-                <iconify-icon icon="solar:hamburger-menu-linear" class="text-xl"
-                ></iconify-icon>
+            <button class="md:hidden text-primary p-2">
+                <iconify-icon
+                    icon="solar:hamburger-menu-linear"
+                    class="text-2xl"></iconify-icon>
             </button>
         </div>
     </div>
 </nav>
 
-<style>
-    #main-nav {
-        transform: translateZ(0);
-    }
-</style>
-
 <script>
-    import { gsap } from "gsap";
-    import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-    gsap.registerPlugin(ScrollTrigger);
-
-    function initNavAnimation() {
+    function initNavScroll() {
         const navInner = document.getElementById("nav-inner");
-        const navLogo = document.getElementById("nav-logo");
-        const navLinks = document.getElementById("nav-links");
-        const navCTA = document.getElementById("nav-cta");
+        const navMain = document.getElementById("main-nav");
+        if (!navInner || !navMain) return;
 
-        if (!navInner) return;
+        function checkScroll() {
+            if (!navInner) return;
 
-        let mm = gsap.matchMedia();
+            if (window.scrollY > 50) {
+                // Scrolled styling (Pastilla)
+                navInner.classList.replace("max-w-screen-xl", "max-w-3xl");
+                navInner.classList.add(
+                    "bg-surface/80",
+                    "backdrop-blur-md",
+                    "border-white/10",
+                    "shadow-lg",
+                );
+                navInner.classList.remove("border-transparent");
 
-        mm.add("(min-width: 768px)", () => {
-            // Desktop Animation
-            gsap.to(navInner, {
-                maxWidth: "600px",
-                marginTop: "1.25rem",
-                padding: "0.6rem 1.25rem",
-                borderRadius: "9999px",
-                backgroundColor: "rgba(5, 5, 5, 0.7)",
-                backdropFilter: "blur(5px)",
-                boxShadow: "0 20px 40px -15px rgba(0, 0, 0, 0.7)",
-                ease: "none",
-                scrollTrigger: {
-                    trigger: "body",
-                    start: "top -10",
-                    end: "top -100",
-                    scrub: 0.5,
-                },
-            });
+                // Shrink padding
+                navInner.classList.replace("py-3", "py-2");
+            } else {
+                // Top styling
+                navInner.classList.replace("max-w-3xl", "max-w-screen-xl");
+                navInner.classList.remove(
+                    "bg-surface/80",
+                    "backdrop-blur-md",
+                    "border-white/10",
+                    "shadow-lg",
+                );
+                navInner.classList.add("border-transparent");
 
-            gsap.to(navLogo, {
-                x: 5,
-                ease: "none",
-                scrollTrigger: {
-                    trigger: "body",
-                    start: "top -10",
-                    end: "top -100",
-                    scrub: 0.5,
-                },
-            });
+                // Original padding
+                navInner.classList.replace("py-2", "py-3");
+            }
+        }
 
-            gsap.to(navCTA, {
-                x: -5,
-                ease: "none",
-                scrollTrigger: {
-                    trigger: "body",
-                    start: "top -10",
-                    end: "top -100",
-                    scrub: 0.5,
-                },
-            });
-        });
-
-        mm.add("(max-width: 767px)", () => {
-            // Mobile Animation
-            gsap.to(navInner, {
-                maxWidth: "92%",
-                marginTop: "1rem",
-                padding: "0.5rem 1rem",
-                borderRadius: "9999px",
-                backgroundColor: "rgba(5, 5, 5, 0.8)",
-                backdropFilter: "blur(12px)",
-                ease: "none",
-                scrollTrigger: {
-                    trigger: "body",
-                    start: "top -10",
-                    end: "top -50",
-                    scrub: 0.5,
-                },
-            });
-        });
+        window.addEventListener("scroll", checkScroll, { passive: true });
+        checkScroll(); // Check on mount
     }
 
-    initNavAnimation();
-
-    document.addEventListener("astro:page-load", initNavAnimation);
+    // Run on first load and view transitions
+    initNavScroll();
+    document.addEventListener("astro:page-load", initNavScroll);
 </script>

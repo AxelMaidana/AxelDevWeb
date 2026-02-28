@@ -22,10 +22,15 @@ const { title, description } = Astro.props;
         <meta name="generator" content={Astro.generator} />
         <title>{title}</title>
         {description && <meta name="description" content={description} />}
+
+        <!-- Preconnect to external domains -->
+        <link rel="preconnect" href="https://images.unsplash.com" />
+        <link rel="preconnect" href="https://code.iconify.design" />
+
         <ClientRouter />
         <script
             src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"
-        ></script>
+            defer></script>
     </head>
     <body
         class="bg-background text-slate-400 selection:bg-indigo-500/30 selection:text-indigo-200 overflow-x-hidden antialiased"
@@ -35,5 +40,28 @@ const { title, description } = Astro.props;
         <Footer />
         <SmoothScroll />
         <ScrollAnimations />
+
+        <style is:global>
+            /* Optimization for View Transitions */
+            ::view-transition-group(*) {
+                animation-duration: 0.4s; /* Slightly faster than default for snapiness */
+            }
+
+            ::view-transition-old(*),
+            ::view-transition-new(*) {
+                animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            }
+
+            /* Prevent scroll jumps during transition */
+            html.astro-transitioning body {
+                overflow: hidden !important;
+            }
+
+            /* Force visibility during transition for morphing elements */
+            [transition\:name] {
+                backface-visibility: hidden;
+                transform: translateZ(0); /* Force GPU acceleration */
+            }
+        </style>
     </body>
 </html>

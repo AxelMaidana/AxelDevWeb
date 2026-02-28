@@ -4,16 +4,20 @@ import Hero from "../components/sections/Hero.astro";
 import TechStack from "../components/sections/TechStack.astro";
 import Services from "../components/sections/Services.astro";
 import Projects from "../components/sections/Projects.astro";
+import Contact from "../components/sections/Contact.astro";
 ---
 
 <Layout
-	title="Axel | Diseñador & Desarrollador Web"
-	description="Portafolio de Axel, diseñador y desarrollador web especializado en experiencias digitales minimalistas."
+	title="Axel | Senior Frontend Developer"
+	description="Portfolio of Axel, a frontend developer and designer specializing in premium minimalist digital experiences."
 >
-	<main class="space-y-32 pb-32">
+	<main class="space-y-0 pb-16">
 		<Hero />
-		<TechStack />
-		<Projects />
-		<Services />
+		<div class="space-y-32">
+			<TechStack />
+			<Projects />
+			<Services />
+			<Contact />
+		</div>
 	</main>
 </Layout>

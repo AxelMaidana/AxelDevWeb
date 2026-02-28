@@ -6,26 +6,35 @@
     gsap.registerPlugin(ScrollTrigger);
 
     let lenis: Lenis;
+    let rafId: any;
+
+    function raf(time: number) {
+        lenis.raf(time * 1000);
+    }
 
     function initLenis() {
         if (lenis) {
             lenis.destroy();
+            gsap.ticker.remove(raf);
         }
 
         lenis = new Lenis({
-            lerp: 0.1,
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            orientation: "vertical",
+            gestureOrientation: "vertical",
+            smoothWheel: true,
             wheelMultiplier: 1,
+            touchMultiplier: 2,
             infinite: false,
         });
 
         lenis.on("scroll", ScrollTrigger.update);
 
-        gsap.ticker.add((time) => {
-            lenis.raf(time * 1000);
-        });
-
+        gsap.ticker.add(raf);
         gsap.ticker.lagSmoothing(0);
 
+        // Handle initial scroll with a defer to let View Transition finish
         const hash = window.location.hash;
         if (hash && hash !== "#") {
             setTimeout(() => {
@@ -37,18 +46,25 @@
                     });
                 }
                 ScrollTrigger.refresh();
-            }, 100);
+            }, 300); // Increased delay for smoother transition start
         } else {
-            lenis.scrollTo(0, { immediate: true });
-            setTimeout(() => ScrollTrigger.refresh(), 50);
+            // Only scroll to top if not returning from a transition that should preserve state
+            if (!window.location.hash) {
+                lenis.scrollTo(0, { immediate: true });
+            }
+            setTimeout(() => ScrollTrigger.refresh(), 100);
         }
     }
 
     initLenis();
+
     document.addEventListener("astro:page-load", initLenis);
 
     document.addEventListener("astro:before-swap", () => {
-        if (lenis) lenis.destroy();
+        if (lenis) {
+            lenis.destroy();
+            gsap.ticker.remove(raf);
+        }
     });
 </script>
 

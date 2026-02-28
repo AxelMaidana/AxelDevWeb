@@ -1,119 +1,104 @@
 <section
     id="stack"
-    class="w-full border-y border-white/5 bg-white/[0.02]"
-    data-reveal="fade-up"
+    class="w-full border-y border-white/5 bg-background overflow-hidden relative"
+    data-reveal="fade-in"
 >
-    <div class="max-w-[100vw] overflow-hidden py-12 relative">
+    <div class="max-w-[100vw] py-16 relative flex items-center">
+        <!-- Fade masks for seamless loop -->
         <div
-            class="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-[#050505] to-transparent z-10"
+            class="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none"
         >
         </div>
         <div
-            class="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-[#050505] to-transparent z-10"
+            class="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none"
         >
         </div>
 
-        <div class="flex w-[200%] animate-scroll">
-            <!-- First Set -->
-            <div class="flex items-center justify-around w-1/2 px-10 gap-12">
-                <div
-                    class="flex items-center gap-3 text-slate-400 grayscale hover:grayscale-0 transition-all duration-500"
-                >
-                    <iconify-icon icon="logos:react" width="24"></iconify-icon>
-                    <span class="text-sm font-mono">React</span>
-                </div>
-                <div
-                    class="flex items-center gap-3 text-slate-400 grayscale hover:grayscale-0 transition-all duration-500"
-                >
-                    <iconify-icon icon="logos:nextjs-icon" width="24"
-                    ></iconify-icon>
-                    <span class="text-sm font-mono">Next.js</span>
-                </div>
-                <div
-                    class="flex items-center gap-3 text-slate-400 grayscale hover:grayscale-0 transition-all duration-500"
-                >
-                    <iconify-icon icon="logos:tailwindcss-icon" width="24"
-                    ></iconify-icon>
-                    <span class="text-sm font-mono">Tailwind</span>
-                </div>
-                <div
-                    class="flex items-center gap-3 text-slate-400 grayscale hover:grayscale-0 transition-all duration-500"
-                >
-                    <iconify-icon icon="logos:typescript-icon" width="24"
-                    ></iconify-icon>
-                    <span class="text-sm font-mono">TypeScript</span>
-                </div>
-                <div
-                    class="flex items-center gap-3 text-slate-400 grayscale hover:grayscale-0 transition-all duration-500"
-                >
-                    <iconify-icon icon="logos:figma" width="24"></iconify-icon>
-                    <span class="text-sm font-mono">Figma</span>
-                </div>
-                <div
-                    class="flex items-center gap-3 text-slate-400 grayscale hover:grayscale-0 transition-all duration-500"
-                >
-                    <iconify-icon icon="simple-icons:supabase" width="24"
-                    ></iconify-icon>
-                    <span class="text-sm font-mono">Supabase</span>
-                </div>
-                <div
-                    class="flex items-center gap-3 text-slate-400 grayscale hover:grayscale-0 transition-all duration-500"
-                >
-                    <iconify-icon icon="logos:nodejs-icon" width="24"
-                    ></iconify-icon>
-                    <span class="text-sm font-mono">Node.js</span>
-                </div>
-            </div>
-            <!-- Duplicate Set for Seamless Loop -->
-            <div class="flex items-center justify-around w-1/2 px-10 gap-12">
-                <div
-                    class="flex items-center gap-3 text-slate-400 grayscale hover:grayscale-0 transition-all duration-500"
-                >
-                    <iconify-icon icon="logos:react" width="24"></iconify-icon>
-                    <span class="text-sm font-mono">React</span>
-                </div>
-                <div
-                    class="flex items-center gap-3 text-slate-400 grayscale hover:grayscale-0 transition-all duration-500"
-                >
-                    <iconify-icon icon="logos:nextjs-icon" width="24"
-                    ></iconify-icon>
-                    <span class="text-sm font-mono">Next.js</span>
-                </div>
-                <div
-                    class="flex items-center gap-3 text-slate-400 grayscale hover:grayscale-0 transition-all duration-500"
-                >
-                    <iconify-icon icon="logos:tailwindcss-icon" width="24"
-                    ></iconify-icon>
-                    <span class="text-sm font-mono">Tailwind</span>
-                </div>
-                <div
-                    class="flex items-center gap-3 text-slate-400 grayscale hover:grayscale-0 transition-all duration-500"
-                >
-                    <iconify-icon icon="logos:typescript-icon" width="24"
-                    ></iconify-icon>
-                    <span class="text-sm font-mono">TypeScript</span>
-                </div>
-                <div
-                    class="flex items-center gap-3 text-slate-400 grayscale hover:grayscale-0 transition-all duration-500"
-                >
-                    <iconify-icon icon="logos:figma" width="24"></iconify-icon>
-                    <span class="text-sm font-mono">Figma</span>
-                </div>
-                <div
-                    class="flex items-center gap-3 text-slate-400 grayscale hover:grayscale-0 transition-all duration-500"
-                >
-                    <iconify-icon icon="simple-icons:supabase" width="24"
-                    ></iconify-icon>
-                    <span class="text-sm font-mono">Supabase</span>
-                </div>
-                <div
-                    class="flex items-center gap-3 text-slate-400 grayscale hover:grayscale-0 transition-all duration-500"
-                >
-                    <iconify-icon icon="logos:nodejs-icon" width="24"
-                    ></iconify-icon>
-                    <span class="text-sm font-mono">Node.js</span>
-                </div>
-            </div>
+        <div
+            class="flex w-max animate-scroll gap-16 px-8 items-center cursor-default"
+        >
+            <!-- Items repeated to create seamless scroll -->
+            {
+                Array.from({ length: 4 })
+                    .fill(0)
+                    .map(() => (
+                        <div class="flex gap-16 items-center shrink-0">
+                            <div class="flex items-center gap-3 text-muted hover:text-primary transition-colors">
+                                <iconify-icon
+                                    icon="logos:react"
+                                    class="text-3xl opacity-60 hover:opacity-100 transition-opacity"
+                                />
+                                <span class="text-sm font-semibold tracking-wide">
+                                    React
+                                </span>
+                            </div>
+                            <div class="flex items-center gap-3 text-muted hover:text-primary transition-colors">
+                                <iconify-icon
+                                    icon="logos:nextjs-icon"
+                                    class="text-3xl opacity-60 hover:opacity-100 transition-opacity"
+                                />
+                                <span class="text-sm font-semibold tracking-wide">
+                                    Next.js
+                                </span>
+                            </div>
+                            <div class="flex items-center gap-3 text-muted hover:text-primary transition-colors">
+                                <iconify-icon
+                                    icon="logos:tailwindcss-icon"
+                                    class="text-3xl opacity-60 hover:opacity-100 transition-opacity"
+                                />
+                                <span class="text-sm font-semibold tracking-wide">
+                                    Tailwind
+                                </span>
+                            </div>
+                            <div class="flex items-center gap-3 text-muted hover:text-primary transition-colors">
+                                <iconify-icon
+                                    icon="logos:typescript-icon"
+                                    class="text-3xl opacity-60 hover:opacity-100 transition-opacity"
+                                />
+                                <span class="text-sm font-semibold tracking-wide">
+                                    TypeScript
+                                </span>
+                            </div>
+                            <div class="flex items-center gap-3 text-muted hover:text-primary transition-colors">
+                                <iconify-icon
+                                    icon="logos:figma"
+                                    class="text-3xl opacity-60 hover:opacity-100 transition-opacity"
+                                />
+                                <span class="text-sm font-semibold tracking-wide">
+                                    Figma
+                                </span>
+                            </div>
+                            <div class="flex items-center gap-3 text-muted hover:text-primary transition-colors">
+                                <iconify-icon
+                                    icon="simple-icons:supabase"
+                                    class="text-3xl text-emerald-500 opacity-60 hover:opacity-100 transition-opacity"
+                                />
+                                <span class="text-sm font-semibold tracking-wide">
+                                    Supabase
+                                </span>
+                            </div>
+                        </div>
+                    ))
+            }
         </div>
     </div>
 </section>
+
+<style>
+    .animate-scroll {
+        animation: scroll 35s linear infinite;
+    }
+
+    .animate-scroll:hover {
+        animation-play-state: paused;
+    }
+
+    @keyframes scroll {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(-50%);
+        }
+    }
+</style>

@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import Layout from "../../layouts/Layout.astro";
 import { projectsData } from "../../data/projects";
 
@@ -16,39 +17,34 @@ const { project } = Astro.props;
     title={`${project.title} | Dev.Identity`}
     description={project.shortDescription}
 >
-    <!-- Breadcrumbs (Above Content) -->
+    <!-- Simple, Clean Breadcrumbs -->
     <div
-        class="w-full border-b border-white/5 bg-[#080808]/50 backdrop-blur-sm pt-28 pb-4"
+        class="w-full bg-background/80 backdrop-blur-xl pt-32 pb-6 sticky top-0 z-40 border-b border-white/5"
     >
-        <div class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
-            <nav aria-label="Breadcrumb" data-reveal="fade-down">
-                <ol
-                    class="flex items-center gap-2 text-xs font-mono tracking-widest uppercase"
-                >
+        <div class="max-w-screen-xl mx-auto px-6">
+            <nav aria-label="Breadcrumb" data-reveal="fade-in">
+                <ol class="flex items-center gap-3 text-sm font-medium">
                     <li>
                         <a
                             href="/"
-                            class="text-slate-500 hover:text-white transition-colors flex items-center gap-1"
+                            class="text-muted hover:text-primary transition-colors flex items-center gap-1.5"
                         >
                             <iconify-icon
                                 icon="solar:home-2-linear"
-                                class="text-sm"></iconify-icon>
-                            <span>Inicio</span>
+                                class="text-lg"></iconify-icon>
+                            <span>Home</span>
                         </a>
                     </li>
-                    <li class="text-slate-800">/</li>
+                    <li class="text-white/10">/</li>
                     <li>
                         <a
                             href="/#projects"
-                            class="text-slate-500 hover:text-white transition-colors"
-                            >Proyectos</a
+                            class="text-muted hover:text-primary transition-colors"
+                            >Selected Work</a
                         >
                     </li>
-                    <li class="text-slate-800">/</li>
-                    <li
-                        class="text-indigo-400/80 font-medium"
-                        aria-current="page"
-                    >
+                    <li class="text-white/10">/</li>
+                    <li class="text-primary font-semibold" aria-current="page">
                         {project.title}
                     </li>
                 </ol>
@@ -57,45 +53,66 @@ const { project } = Astro.props;
     </div>
 
     <main class="min-h-screen bg-background pb-32">
-        <section class="relative h-[70vh] min-h-[600px] w-full mt-8">
+        <!-- Minimal Hero Image Area -->
+        <section class="max-w-screen-xl mx-auto px-6 mt-12 mb-20">
             <div
-                class="absolute inset-0 max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 h-full rounded-[2rem] overflow-hidden"
+                class="relative h-[60vh] min-h-[500px] w-full rounded-premium border border-white/5 overflow-hidden shadow-premium"
+                data-reveal="fade-in"
+                data-reveal-delay="100"
             >
-                <img
+                <Image
                     src={project.image}
                     alt={project.title}
+                    width={1920}
+                    height={1080}
+                    loading="eager"
+                    decoding="async"
                     class="absolute inset-0 w-full h-full object-cover"
                     transition:name={`project-media-${project.id}`}
                 />
 
+                <!-- Beautiful soft blur overlay instead of harsh dark gradient -->
                 <div
-                    class="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/40 to-transparent"
+                    class="absolute inset-0 bg-background/20 backdrop-blur-[2px]"
+                >
+                </div>
+
+                <div
+                    class="absolute inset-0 bg-gradient-to-t from-background/90 via-background/40 to-transparent"
                 >
                 </div>
 
                 <div
                     class="absolute inset-0 flex flex-col justify-end p-8 md:p-16"
                 >
-                    <div class="max-w-4xl" data-reveal="fade-up">
-                        <div class="flex items-center gap-4 mb-6">
+                    <div
+                        class="max-w-4xl"
+                        data-reveal="fade-up"
+                        data-reveal-delay="300"
+                    >
+                        <div class="flex items-center gap-3 mb-6">
                             <span
-                                class="text-xs font-mono border border-white/10 bg-black/50 backdrop-blur-md px-3 py-1.5 rounded-full text-indigo-300 uppercase tracking-wider"
+                                class="text-xs font-semibold px-4 py-1.5 rounded-full bg-surface-hover/80 backdrop-blur-md border border-white/10 text-primary uppercase tracking-wide"
                             >
                                 {project.category}
                             </span>
-                            <span class="text-xs font-mono text-slate-400">
+                            <span
+                                class="text-sm font-medium text-muted flex items-center gap-2"
+                            >
+                                <span class="w-1.5 h-1.5 rounded-full bg-muted"
+                                ></span>
                                 {project.year}
                             </span>
                         </div>
 
                         <h1
-                            class="text-4xl md:text-6xl lg:text-7xl text-white font-medium tracking-tight mb-4"
+                            class="text-5xl md:text-6xl lg:text-[5rem] text-primary font-semibold tracking-tight leading-[1.1] mb-6"
                             transition:name={`project-title-${project.id}`}
                         >
                             {project.title}
                         </h1>
                         <p
-                            class="text-xl md:text-2xl text-slate-300 font-light max-w-2xl"
+                            class="text-lg md:text-2xl text-secondary font-normal max-w-2xl leading-relaxed"
                         >
                             {project.shortDescription}
                         </p>
@@ -104,54 +121,74 @@ const { project } = Astro.props;
             </div>
         </section>
 
-        <section class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 mt-12">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <!-- Content Details Area -->
+        <section class="max-w-screen-xl mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+                <!-- Sidebar Metadata -->
                 <div
-                    class="lg:col-span-4 flex flex-col gap-6"
+                    class="lg:col-span-4 flex flex-col gap-8"
                     data-reveal="fade-up"
                 >
                     <div
-                        class="bg-[#0A0A0A] border border-white/5 rounded-[2rem] p-8 md:p-10 hover:border-white/10 transition-colors"
+                        class="bg-surface rounded-premium p-8 border border-white/5 hover:border-white/10 transition-colors"
                     >
                         <h3
-                            class="text-sm font-mono text-slate-500 mb-6 uppercase tracking-wider"
+                            class="text-sm font-semibold text-primary mb-8 tracking-wide border-b border-white/5 pb-4"
                         >
-                            Detalles
+                            Project Particulars
                         </h3>
                         <div class="space-y-6">
                             <div>
-                                <p class="text-xs text-slate-600 mb-1">Rol</p>
-                                <p class="text-white font-medium">
+                                <p
+                                    class="text-sm text-muted mb-1.5 font-medium"
+                                >
+                                    Role
+                                </p>
+                                <p class="text-primary font-medium text-lg">
                                     {project.role}
                                 </p>
                             </div>
                             <div>
-                                <p class="text-xs text-slate-600 mb-1">
-                                    Stack Tecnológico
+                                <p
+                                    class="text-sm text-muted mb-1.5 font-medium"
+                                >
+                                    Duration
                                 </p>
-                                <div class="flex flex-wrap gap-2 mt-2">
+                                <p class="text-primary font-medium text-lg">
+                                    {project.duration}
+                                </p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-muted mb-3 font-medium">
+                                    Engineering Stack
+                                </p>
+                                <div class="flex flex-wrap gap-2">
                                     {
                                         project.technologies.map((tech) => (
-                                            <span class="text-[11px] font-mono border border-indigo-500/20 bg-indigo-500/5 text-indigo-300 px-2.5 py-1 rounded-full">
+                                            <span class="text-xs font-medium border border-white/5 bg-white/5 backdrop-blur-sm text-secondary px-3 py-1.5 rounded-full tracking-wide">
                                                 {tech}
                                             </span>
                                         ))
                                     }
                                 </div>
                             </div>
-                            <div class="pt-4 flex gap-4">
+
+                            <!-- Links Area -->
+                            <div
+                                class="pt-8 mt-2 flex flex-col gap-3 border-t border-white/5"
+                            >
                                 {
                                     project.liveUrl && (
                                         <a
                                             href={project.liveUrl}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            class="flex items-center gap-2 text-sm text-white hover:text-emerald-400 transition-colors group"
+                                            class="w-full flex items-center justify-center gap-2 bg-primary text-background py-3.5 rounded-full text-sm font-semibold hover:bg-white transition-colors shadow-sm"
                                         >
-                                            <span>Live Site</span>
+                                            Explore Platform
                                             <iconify-icon
                                                 icon="solar:arrow-right-up-linear"
-                                                class="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
+                                                class="text-lg"
                                             />
                                         </a>
                                     )
@@ -162,13 +199,13 @@ const { project } = Astro.props;
                                             href={project.repoUrl}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            class="flex items-center gap-2 text-sm text-white hover:text-slate-300 transition-colors group"
+                                            class="w-full flex items-center justify-center gap-2 bg-surface-hover/80 backdrop-blur-md border border-white/10 text-primary py-3.5 rounded-full text-sm font-semibold hover:bg-surface transition-colors"
                                         >
-                                            <span>Repository</span>
                                             <iconify-icon
-                                                icon="solar:github-linear"
-                                                class="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
+                                                icon="simple-icons:github"
+                                                class="text-lg"
                                             />
+                                            Source Code
                                         </a>
                                     )
                                 }
@@ -177,47 +214,49 @@ const { project } = Astro.props;
                     </div>
                 </div>
 
+                <!-- Main Description -->
                 <div
-                    class="lg:col-span-8 flex flex-col gap-6"
+                    class="lg:col-span-8 flex flex-col gap-8"
                     data-reveal="fade-up"
                     data-reveal-delay="100"
                 >
                     <div
-                        class="bg-[#0A0A0A] border border-white/5 rounded-[2rem] p-8 md:p-12 hover:border-white/10 transition-colors"
+                        class="bg-surface rounded-premium p-8 md:p-12 border border-white/5"
                     >
-                        <h3
-                            class="text-sm font-mono text-slate-500 mb-6 uppercase tracking-wider"
-                        >
-                            El Desafío
+                        <h3 class="text-lg font-semibold text-primary mb-6">
+                            The Challenge & Approach
                         </h3>
                         <p
-                            class="text-lg md:text-xl text-slate-300 font-light leading-relaxed"
+                            class="text-lg text-secondary font-normal leading-relaxed mb-12"
                         >
                             {project.fullDescription}
                         </p>
-                    </div>
 
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        {
-                            project.features.map((feature, idx) => (
-                                <div
-                                    class={`bg-gradient-to-br from-[#0A0A0A] to-[#0D0D0D] border border-white/5 rounded-[2rem] p-8 hover:border-indigo-500/20 transition-colors relative overflow-hidden group ${idx === project.features.length - 1 && project.features.length % 2 !== 0 ? "md:col-span-2" : ""}`}
-                                >
-                                    <div class="absolute -right-20 -top-20 w-40 h-40 bg-indigo-500/10 rounded-full blur-3xl group-hover:bg-indigo-500/20 transition-colors" />
-
-                                    <iconify-icon
-                                        icon="solar:star-fall-minimalistic-linear"
-                                        class="text-3xl text-indigo-400 mb-6"
-                                    />
-                                    <h4 class="text-xl text-white font-medium mb-3 relative z-10">
-                                        {feature.title}
-                                    </h4>
-                                    <p class="text-slate-400 font-light leading-relaxed relative z-10">
-                                        {feature.description}
-                                    </p>
-                                </div>
-                            ))
-                        }
+                        <h4
+                            class="text-base font-semibold text-primary mb-6 border-b border-white/5 pb-4"
+                        >
+                            Key Achievements
+                        </h4>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            {
+                                project.features.map((feature) => (
+                                    <div class="bg-surface-hover/50 rounded-premium-inner p-6 hover:bg-surface-hover transition-colors border border-white/5">
+                                        <div class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mb-4">
+                                            <iconify-icon
+                                                icon="solar:verified-check-linear"
+                                                class="text-xl text-primary"
+                                            />
+                                        </div>
+                                        <h5 class="text-base text-primary font-medium mb-2">
+                                            {feature.title}
+                                        </h5>
+                                        <p class="text-sm text-secondary font-normal leading-relaxed">
+                                            {feature.description}
+                                        </p>
+                                    </div>
+                                ))
+                            }
+                        </div>
                     </div>
                 </div>
             </div>

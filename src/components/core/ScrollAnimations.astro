@@ -5,6 +5,9 @@
     gsap.registerPlugin(ScrollTrigger);
 
     function initAnimations() {
+        // Kill existing scroll triggers to prevent memory leaks and conflicts
+        ScrollTrigger.getAll().forEach((t) => t.kill());
+
         const reveals = document.querySelectorAll("[data-reveal='fade-up']");
 
         reveals.forEach((element) => {
@@ -18,7 +21,7 @@
                     ease: "power3.out",
                     scrollTrigger: {
                         trigger: element,
-                        start: "top 85%",
+                        start: "top 90%", // Slightly lower threshold for better performance
                         toggleActions: "play none none reverse",
                     },
                 },
@@ -41,7 +44,7 @@
                     stagger: 0.1,
                     scrollTrigger: {
                         trigger: container,
-                        start: "top 80%",
+                        start: "top 85%",
                         toggleActions: "play none none reverse",
                     },
                 },
@@ -49,7 +52,11 @@
         });
     }
 
-    initAnimations();
+    // Delay initialization slightly to prioritize View Transition smoothness
+    const handleInit = () => {
+        setTimeout(initAnimations, 100);
+    };
 
-    document.addEventListener("astro:page-load", initAnimations);
+    handleInit();
+    document.addEventListener("astro:page-load", handleInit);
 </script>

@@ -21,13 +21,14 @@
                 <h2
                     class="text-4xl md:text-5xl lg:text-6xl text-primary font-semibold tracking-tight leading-[1.1] mb-6"
                 >
-                    Let's build<br />something great.
+                    Hagamos realidad<br />tus ideas.
                 </h2>
                 <p
                     class="text-lg text-secondary font-normal max-w-md mb-10 leading-relaxed"
                 >
-                    Ready to transform your ideas into reality? I'm available
-                    for freelance projects and exciting collaborations.
+                    ¿Listo para transformar tus ideas en realidad? Estoy
+                    disponible para proyectos freelance y colaboraciones
+                    emocionantes.
                 </p>
 
                 <div class="flex flex-col gap-6">
@@ -64,12 +65,12 @@
                         </div>
                         <div>
                             <p class="text-sm text-muted font-medium mb-0.5">
-                                Availability
+                                Disponibilidad
                             </p>
                             <p
                                 class="text-base text-primary font-medium group-hover:text-white transition-colors"
                             >
-                                Book a discovery call
+                                Reserva una llamada
                             </p>
                         </div>
                     </a>
@@ -85,12 +86,12 @@
                             <label
                                 for="name"
                                 class="text-sm font-medium text-secondary ml-1"
-                                >Name</label
+                                >Nombre</label
                             >
                             <input
                                 type="text"
                                 id="name"
-                                placeholder="John Doe"
+                                placeholder="Tu nombre"
                                 class="w-full bg-surface border border-white/5 rounded-xl px-4 py-3.5 text-sm text-primary placeholder:text-muted outline-none focus:border-white/20 focus:bg-surface-hover transition-all shadow-sm"
                             />
                         </div>
@@ -103,7 +104,7 @@
                             <input
                                 type="email"
                                 id="email"
-                                placeholder="john@example.com"
+                                placeholder="tu@email.com"
                                 class="w-full bg-surface border border-white/5 rounded-xl px-4 py-3.5 text-sm text-primary placeholder:text-muted outline-none focus:border-white/20 focus:bg-surface-hover transition-all shadow-sm"
                             />
                         </div>
@@ -113,12 +114,12 @@
                         <label
                             for="message"
                             class="text-sm font-medium text-secondary ml-1"
-                            >Message</label
+                            >Mensaje</label
                         >
                         <textarea
                             id="message"
                             rows="4"
-                            placeholder="How can I help you?"
+                            placeholder="¿Cómo puedo ayudarte?"
                             class="w-full bg-surface border border-white/5 rounded-xl px-4 py-3.5 text-sm text-primary placeholder:text-muted outline-none focus:border-white/20 focus:bg-surface-hover transition-all shadow-sm resize-none"
                         ></textarea>
                     </div>
@@ -127,7 +128,7 @@
                         type="submit"
                         class="w-full bg-primary text-background mt-2 py-4 rounded-xl text-sm font-semibold hover:bg-white transition-all shadow-sm flex justify-center items-center gap-2 group"
                     >
-                        Send Message
+                        Enviar Mensaje
                         <iconify-icon
                             icon="solar:plain-linear"
                             class="text-lg group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"
@@ -144,7 +145,9 @@
     if (form) {
         form.addEventListener("submit", (e) => {
             e.preventDefault();
-            alert("Thanks for your message! This is a demo.");
+            alert(
+                "¡Gracias por tu mensaje! Pronto me pondré en contacto contigo.",
+            );
         });
     }
 </script>

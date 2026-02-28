@@ -20,70 +20,75 @@ export interface Project {
 
 export const projectsData: Project[] = [
     {
-        id: "fintech-dashboard",
-        title: "Fintech Dashboard",
-        shortDescription: "Plataforma de gestión de activos en tiempo real con visualización de datos complejos.",
-        fullDescription: "Un ecosistema financiero completo diseñado para traders institucionales. El desafío fue procesar WebSockets de alta frecuencia (100+ ticks por segundo) y renderizar data densa sin penalizar el framerate. Se implementó una arquitectura de estado atómica y WebGL para los gráficos principales. El resultado es una interfaz limpia que prioriza la legibilidad de datos en estrés operativo, reduciendo la carga cognitiva del usuario en decisiones críticas.",
-        technologies: ["React", "TypeScript", "D3.js", "Zustand", "Tailwind CSS"],
-        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop",
-        category: "Product Design & Frontend",
+        id: "1",
+        title: "LB Consultoría",
+        shortDescription: "Plataforma de consultoria y acompañamiento integral para una mejor trayectoria académica y profesional.",
+        fullDescription: "Desarrollo de una plataforma integral para la gestión de una consultora educativa. El proyecto incluye un sistema de turnos con calendario interactivo y gestion de usuarios.",
+        technologies: ["React", "TypeScript", "Vite", "Firebase", "Tailwind CSS"],
+        image: "/projects/lb-consultoria.png",
+        category: "Fullstack",
         year: "2025",
-        role: "Lead Frontend Engineer",
-        duration: "6 Months",
-        liveUrl: "https://example.com/fintech",
+        role: "Desarrollador Fullstack",
+        duration: "3 Meses",
+        liveUrl: "https://lb-consultoria.netlify.app/",
         features: [
             {
-                title: "Real-time Metrics",
-                description: "Procesamiento y pintado de +1M de puntos de datos usando WebGL Canvas."
+                title: "Métricas en Tiempo Real",
+                description: "Procesamiento y visualización de +1M de puntos de datos usando WebGL Canvas."
             },
             {
-                title: "Dark Mode Optimizied",
-                description: "Paletas de colores HSL especialmente calibradas para reducir fatiga visual en sesiones largas."
+                title: "Modo Oscuro Optimizado",
+                description: "Paletas de colores HSL especialmente calibradas para reducir la fatiga visual."
             },
             {
-                title: "Modular Widgets",
-                description: "Arquitectura que permite a cada usuario configurar su propio espacio de trabajo (drag & drop)."
+                title: "Widgets Modulares",
+                description: "Arquitectura que permite a cada usuario configurar su propio espacio de trabajo."
             }
         ]
     },
     {
-        id: "ecommerce-modular",
-        title: "E-commerce Modular",
-        shortDescription: "Arquitectura headless para una marca de moda high-end con integración de pagos.",
-        fullDescription: "Rediseño completo de la experiencia de compra para enfocarse en la fotografía de producto y microinteracciones fluidas. Al desacoplar el frontend del monolito de e-commerce, logramos un TTFB (Time to First Byte) en el percentil 99 de 50ms alrededor del mundo. Las transiciones de página son parecidas a una app nativa, creando una experiencia inmersiva que incrementó la retención de usuarios un 40%.",
-        technologies: ["Next.js", "Framer Motion", "Stripe", "Shopify Storefront API"],
-        image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1200&auto=format&fit=crop",
-        category: "Headless Commerce",
-        year: "2024",
-        role: "Fullstack Developer",
-        duration: "4 Months",
+        id: "2",
+        title: "Spa Sentirse Bien",
+        shortDescription: "Plataforma de gestión de turnos, stock de productos y usuarios para un spa de belleza.",
+        fullDescription: "Desarrollo de una plataforma integral para la gestión de un spa de belleza. El proyecto incluye un sistema de turnos con calendario interactivo, gestión de stock de productos y administración de usuarios. La plataforma permite a los administradores gestionar los servicios ofrecidos, los productos disponibles y los clientes que visitan el spa. Además, cuenta con un sistema de notificaciones para recordar a los clientes sus citas programadas.",
+        technologies: ["React", "TypeScript", "Vite", "Firebase", "Tailwind CSS"],
+        image: "/projects/SPA-Sentirse-Bien.webp",
+        category: "Fullstack",
+        year: "2025",
+        role: "Desarrollador Fullstack",
+        duration: "3 Meses",
+        liveUrl: "https://spaweb-sentirsebien.netlify.app/",
         features: [
             {
-                title: "Performance First",
-                description: "Score de 100 en Core Web Vitals en mobile a pesar de ser image-heavy."
+                title: "Métricas en Tiempo Real",
+                description: "Procesamiento y visualización de +1M de puntos de datos usando WebGL Canvas."
             },
             {
-                title: "Transiciones Fluidas",
-                description: "Navegación sin interrupciones preservando el estado de contexto del carrito y filtros."
+                title: "Modo Oscuro Optimizado",
+                description: "Paletas de colores HSL especialmente calibradas para reducir la fatiga visual."
+            },
+            {
+                title: "Widgets Modulares",
+                description: "Arquitectura que permite a cada usuario configurar su propio espacio de trabajo."
             }
         ]
     },
     {
-        id: "saas-landing-system",
-        title: "SaaS Landing System",
-        shortDescription: "Sistema de diseño escalable para startup de IA, enfocado en conversión y performance.",
-        fullDescription: "Construcción desde cero de un generador de landings dinámico gobernado por un Headless CMS. La prioridad fue dar poder al equipo de marketing para iterar sobre tests A/B en minutos sin tocar código. Implementé un motor de renderizado basado en bloques astrictos que obligatoriamente siguen el Design System (espaciados matemáticos, jerarquía tipográfica automatizada).",
-        technologies: ["Astro", "Tailwind CSS", "Sanity IO"],
-        image: "https://images.unsplash.com/photo-1557821552-17105176677c?q=80&w=1200&auto=format&fit=crop",
-        category: "Web Architecture",
-        year: "2024",
-        role: "Web Engineer",
-        duration: "3 Months",
-        repoUrl: "https://github.com/example/saas",
+        id: "3",
+        title: "Wally App",
+        shortDescription: "Aplicación web para la gestión ingresos y egresos personales con inteligencia artificial.",
+        fullDescription: "Aplicación web para la gestión ingresos y egresos personales con inteligencia artificial. La prioridad fue dar poder al usuario para gestionar sus finanzas personales de manera sencilla e intuitiva.",
+        technologies: ["React", "TypeScript", "Vite", "Firebase", "Tailwind CSS"],
+        image: "/projects/Wally-Ahorra-inteligente.webp",
+        category: "Fullstack",
+        year: "2026",
+        role: "Desarrollador Fullstack",
+        duration: "1 Mes",
+        liveUrl: "https://wallydev.netlify.app/",
         features: [
             {
-                title: "Design System",
-                description: "Componentes encapsulados que garantizan consistencia sin importar la combinación que arme el editor."
+                title: "Sistema de Diseño",
+                description: "Componentes encapsulados que garantizan consistencia en toda la plataforma."
             },
             {
                 title: "Astro Islands",
@@ -92,20 +97,21 @@ export const projectsData: Project[] = [
         ]
     },
     {
-        id: "analytics-app",
-        title: "Analytics App",
-        shortDescription: "Dashboard interno para visualización de KPIs corporativos.",
+        id: "4",
+        title: "Colegio de Enfermería del Chaco",
+        shortDescription: "Plataforma de gestión de matriculas y usuarios para el Colegio de Enfermería del Chaco.",
         fullDescription: "Herramienta PWA para equipos de management que necesitaban consolidar métricas de 5 fuentes de datos distintas. El foco estuvo en la síntesis de información, usando espacios negativos para guiar el ojo y animaciones sutiles que comunican la carga de datos sin usar spinners bloqueantes. Un proyecto donde la UI desaparece y la atención se centra solo en la data.",
         technologies: ["Vue.js", "GraphQL", "Chart.js"],
-        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop",
-        category: "Internal Tooling",
-        year: "2023",
-        role: "Frontend Developer",
-        duration: "5 Months",
+        image: "/projects/colegio.png",
+        category: "Fullstack",
+        year: "2024",
+        role: "Desarrollador Fullstack",
+        duration: "3 Meses",
+        liveUrl: "https://colegio-de-enfermeria-del-chaco-4ans.vercel.app/",
         features: [
             {
-                title: "Data Aggregation",
-                description: "Capa de GraphQL que unifica 5 APIs REST legacy en un solo endpoint tipado."
+                title: "Agregación de Datos",
+                description: "Capa de GraphQL que unifica múltiples fuentes de datos en un solo endpoint."
             }
         ]
     }
